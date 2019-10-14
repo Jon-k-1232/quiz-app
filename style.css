@@ -1,21 +1,36 @@
 
 body{
-    background-size: cover;
-    background-repeat: repeat-y;
+    background-color: #ddd;
 }
 
-#backRndImg{
+h1.focus {
+    color: #a91516;
+}
 
+.callToAction {
+    line-height: 25px;
+    color: #004160;
+}
+
+.scoreHead {
+    margin: 1em 0;
+    padding: 0;
 }
 
 .questionLine, .scoreLine, .header {
     display: inline;
-    font-size: 25px;
+    font-size: 1.25em;
     text-align: center;
+    font-weight: bold;
+    color: #4e7082;
 }
 
 .scoreLine{
     padding-left: 10px;
+}
+
+.questionCounter, .score {
+    color: #b51213;
 }
 
 .questionCounterL{
@@ -23,15 +38,14 @@ body{
 }
 
 .quizContainer{
-    display: flex;
     display: inline;
     flex-direction: column;
     align-items: center;
     margin: 2em 1em;
+    color: black;
 }
 
 .quizBox{
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,21 +53,66 @@ body{
     text-align: center;
     margin: auto;
     padding: 1em;
+    //border: black solid;
 }
 
-button{
-
+.startButton, .buttonNext, .submitButton, .resetButton{
     margin-top: 1em;
-    margin-bottom: 1em;
-    width: 8em;
-    font-size: 2em;
-    background-color: #687864;
+    margin-bottom: 2em;
+    font-size: 1.5em;
+    background-color: #b31618;
     border: 0px;
+    color: white;
+    text-transform: uppercase;
+    padding: .25em .5em;
+    font-weight: 800;
+    border-radius: 5px;
+    box-shadow: 2px 2px 19px #a29e9e;
 }
 
-.activeImages{
-    height: 275px;
+.activeImages {
+    height: auto;
+    width: 110%;
     padding-right: auto;
+}
 
+.possAnswers{
+    display:block;
+    font-size: 21px;
+    color: #004160;
+    margin-bottom: 1em;
+    text-align: left;
+}
 
+.answerCorrect{
+    font-size: 18px;
+    color: #004160;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.questionText{
+    color: #a91516;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.answerHead{
+    font-size: 25px;
+    color: #004160;
+}
+
+.answerPar{
+    color: #a91516;
+}
+
+.interrogationBox, .answerBox{
+    text-align: center;
+}
+
+.rightWrongImg {
+    height: auto;
+    width: 110%;
+    padding-right: auto;
 }
