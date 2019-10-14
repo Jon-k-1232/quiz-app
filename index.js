@@ -120,7 +120,7 @@ function printQuestions(){
 
     }else{
         $('.questionCounter').text(5);
-        $('.interrogationBox').hide(); //removed .box
+        $('.interrogationBox').hide();
         finalScore();
         console.log('Final Score Processed');
     }
@@ -172,8 +172,8 @@ function submitAnswer() {
 //displays correct answer
 function correctAnswer(){
     $('.answerBox').html(
-        `<h3 class="answerHead">Getting more American by the minute!</h3>
-      <p class="answerPar">Now go shotgun that keg and click next.</p>
+        `<h3 class="answerHead">Well butter my butt and call me a biscuit! You might be a REAL American!</h3>
+      <p class="answerPar">Now go shotgun that keg and get a move on!</p>
       <button type="button" class="buttonNext button">Next</button>
     <img class="rightWrongImg" src="images/correct.jpg">`
     );
@@ -214,22 +214,22 @@ function finalScore() {
     $('.questionBox').show();
 
     const perfect = [
-        'Well it appears you are a Real American after all. '
+        "Well I s'wanee! You a real American! "
     ];
 
     const good = [
-        'Brush up on your history, your a boarder line treasonist.',
+        "I reckon' your a boarder line treasonist. Tread lightly.",
     ];
 
     const sucky = [
-        'Two words. Treasonist Commie.'
+        'Im gonna cut your tail! You a darn commie!'
     ];
 
     if (score >= 5) {
         array = perfect;
         console.log('Pulling perfect score array');
 
-    } else if (score < 3 && score >= 4) {
+    } else if (score >= 3 && score <= 4) {
         array = good;
         console.log('pulling mediocre array');
     } else {
@@ -238,10 +238,9 @@ function finalScore() {
     }
 
     return $('.questionBox').html(
-        `<h3>${array[0]}</h3>
-        <h3>Your score is ${score} / 5</h3>
+        `<h3 class="really">${array[0]}</h3>
+        <p class="reallyPar">Your score is ${score} / 5</p>
         <button type="submit" class="resetButton button">Restart</button>`)
-
 }
 
 
@@ -251,6 +250,7 @@ function doItAgain() {
         e.preventDefault();
         resetCounter();
         $('.quizBox').show();
+        $('.questionBox').hide();
         console.log(`Quiz reset, questionNum should be 1 and it is showing as ${questionNum}`);
     });
 }
@@ -263,6 +263,7 @@ function startQuiz(){
     doItAgain();
     finalScore();
     console.log(`questionNum starting as ${questionNum}`);
+    $('.otBox').hide();
     $('.questionBox').hide();
     $('.interrogationBox').hide();
     $('.answerBox').hide();

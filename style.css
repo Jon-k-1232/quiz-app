@@ -1,15 +1,22 @@
 
 body{
     background-color: #ddd;
+    font-family: 'Racing Sans One', cursive;
+
 }
 
 h1.focus {
     color: #a91516;
 }
 
+fieldset{
+    border: none;
+}
+
 .callToAction {
     line-height: 25px;
     color: #004160;
+    font-size: 17px;
 }
 
 .scoreHead {
@@ -45,6 +52,19 @@ h1.focus {
     color: black;
 }
 
+.activeImages {
+    height: auto;
+    width: 110%;
+    padding-right: auto;
+}
+
+.rightWrongImg {
+    height: auto;
+    width: 110%;
+    padding-right: auto;
+    margin-top: -5px;
+}
+
 .quizBox{
     display: flex;
     flex-direction: column;
@@ -70,12 +90,6 @@ h1.focus {
     box-shadow: 2px 2px 19px #a29e9e;
 }
 
-.activeImages {
-    height: auto;
-    width: 110%;
-    padding-right: auto;
-}
-
 .possAnswers{
     display:block;
     font-size: 21px;
@@ -98,21 +112,147 @@ h1.focus {
     margin-bottom: 1em;
 }
 
-.answerHead{
-    font-size: 25px;
+.answerHead, .really{
+    font-size: 27px;
     color: #004160;
 }
 
-.answerPar{
+.answerPar, .reallyPar{
     color: #a91516;
+    font-size: 19px;
 }
 
-.interrogationBox, .answerBox{
+.interrogationBox, .answerBox, .questionBox, .questionText{
     text-align: center;
+    margin-top: 0em;
 }
 
-.rightWrongImg {
-    height: auto;
-    width: 110%;
-    padding-right: auto;
+
+
+.reallyPar{
+    color: #a91516;
+    font-size: 22px;
+}
+
+
+.questionText{
+    display: flex;
+    justify-content: center;
+
+}
+
+form{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    .activeImages {
+        height: auto;
+        width: 100%;
+        padding-right: auto;
+    }
+
+
+    .rightWrongImg {
+        height: auto;
+        width: 100%;
+        padding-right: auto;
+        margin-top: -5px;
+    }
+
+
+    .callToAction {
+        line-height: 25px;
+        color: #004160;
+        font-size: 20px;
+    }
+
+    h1.focus {
+        color: #a91516;
+        font-size: 43px;
+    }
+
+    .questionText {
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    .possAnswers {
+        display: block;
+        font-size: 30px;
+        color: #004160;
+        margin-bottom: 1em;
+        text-align: left;
+    }
+
+    .questionLine, .scoreLine, .header {
+        display: inline;
+        font-size: 1.5em;
+        text-align: center;
+        font-weight: bold;
+        color: #4e7082;
+    }
+
+    .answerHead, .really {
+        font-size: 34px;
+        color: #004160;
+    }
+
+    .answerPar, .reallyPar {
+        color: #a91516;
+        font-size: 26px;
+    }
+
+    .answerCorrect {
+        font-size: 22px;
+        color: #004160;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width: 1320px) {
+
+    .activeImages {
+        height: auto;
+        width: 90%;
+        padding-right: auto;
+    }
+
+    .rightWrongImg {
+        height: auto;
+        width: 90%;
+        padding-right: auto;
+        margin-top: -5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+}
+
+
+@media screen and (min-width: 1450px) {
+
+    .activeImages {
+        height: auto;
+        width: 70%;
+        padding-right: auto;
+    }
+
+    .rightWrongImg {
+        height: auto;
+        width: 70%;
+        padding-right: auto;
+        margin-top: -5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
 }
