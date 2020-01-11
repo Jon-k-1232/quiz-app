@@ -99,17 +99,31 @@ function resetCounter() {
     console.log('reset counter processed');
 }
 
-// Start button on click
-function quizStrt(){
-    console.log(`Quiz initiated questionNum = ${questionNum}`);
-    $('.quizContainer').on('click','.startButton',function(e){
-        $('.questionCounter').text(`${1}`);
-        $('.interrogationBox').show();
-        $('.quizBox').hide();
-        $('.questionBox').hide();
-        $('.interrogationBox').prepend(printQuestions());
-    })
+
+//amending the HTML
+function createNewAmend(questionNum) {
+    let formMaker = $(`<form>
+    <fieldset>
+      <legend class="questionText">${questions[questionNum].question}</legend>
+    </fieldset>
+  </form>`)
+    console.log(`Should be pulling question array key ${questionNum}, which should be equal to ${questionNum}`);
+    console.log(`QuestionNum is showing as ${questionNum} at createNewAmend while amending HTML`);
+
+    let fieldSelector = $(formMaker).find('fieldset');
+
+    questions[questionNum].answers.forEach(function (answerMoney, answerList) {
+        $(`<label class="possAnswers" for="${answerList}">
+        <input class="radio" type="radio" id="${answerList}" value="${answerMoney}" name="answer" required>
+        <span>${answerMoney}</span>
+      </label>
+      `).appendTo(fieldSelector);
+    });
+    $(`<button type="submit" class="submitButton button"> Submit</button > `).appendTo(fieldSelector);
+    return formMaker;
+    console.log(`HTML amendment working and questionNum is on ${questionNum}`);
 }
+
 
 // print question
 function printQuestions(){
@@ -126,29 +140,19 @@ function printQuestions(){
     }
 }
 
-//amending the HTML
-function createNewAmend(questionList) {
-    let formMaker = $(`<form>
-    <fieldset>
-      <legend class="questionText">${questions[questionList].question}</legend>
-    </fieldset>
-  </form>`)
-    console.log(`Should be pulling question array key ${questionList}, which should be equal to ${questionNum}`);
-    console.log(`QuestionNum is showing as ${questionNum} at createNewAmend while amending HTML`);
-
-    let fieldSelector = $(formMaker).find('fieldset');
-
-    questions[questionList].answers.forEach(function (answerMoney, answerList) {
-        $(`<label class="possAnswers" for="${answerList}">
-        <input class="radio" type="radio" id="${answerList}" value="${answerMoney}" name="answer" required>
-        <span>${answerMoney}</span>
-      </label>
-      `).appendTo(fieldSelector);
-    });
-    $(`<button type="submit" class="submitButton button"> Submit</button > `).appendTo(fieldSelector);
-    return formMaker;
-    console.log(`HTML amendment working and questionNum is on ${questionNum}`);
+// Start button on click
+function quizStrt(){
+    console.log(`Quiz initiated questionNum = ${questionNum}`);
+    $('.quizContainer').on('click','.startButton',function(e){
+        $('.questionCounter').text(`${questionNum}`);
+        $('.interrogationBox').show();
+        $('.quizBox').hide();
+        $('.questionBox').hide();
+        $('.interrogationBox').prepend(printQuestions());
+    })
 }
+
+
 
 //submit answer to question
 function submitAnswer() {
@@ -175,7 +179,7 @@ function correctAnswer(){
         `<h3 class="answerHead">Well butter my butt and call me a biscuit! You might be a REAL American!</h3>
       <p class="answerPar">Now go shotgun that keg and get a move on!</p>
       <button type="button" class="buttonNext button">Next</button>
-    <img class="rightWrongImg" src="images/correct.jpg">`
+    <img class="rightWrongImg" src="images/correct.jpg" alt="Marine Corps Iwo Jima flag raising monument in Washington D.C. at night with fireworks in background">`
     );
     scoreCount();
     console.log(`Question number is showing as ${questionNum} at correctAnswer, correct answer function processed`);
@@ -189,7 +193,7 @@ function wrongAnswer(){
     <p class="answerPar">It's actually:</p>
     <p class="answerCorrect">${questions[questionNum].correctAnswer}</p>
     <button type="button" class="buttonNext button">Next</button>
-    <img class="rightWrongImg" src="images/wrong.jpg">`
+    <img class="rightWrongImg" src="images/wrong.jpg" alt="Quote from John Adams, 'You will never know how much it has cost my generation to preserve your freedom. I hope you will make a good use of it.'">`
     );
     console.log(`Question number is showing as ${questionNum} at wrongAnswer, Wrong answer function processed`);
 }
@@ -218,7 +222,7 @@ function finalScore() {
     ];
 
     const good = [
-        "I reckon' your a boarder line treasonist. Tread lightly.",
+        "I reckon' your a borderline treasonist. Tread lightly.",
     ];
 
     const sucky = [
