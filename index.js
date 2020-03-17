@@ -80,14 +80,12 @@ let questionNum= 1;
 function scoreCount(){
     score++;
     $('.score').text(score);
-    console.log(`Score counter cycled score should be showing ${score}`);
 }
 
 //question counter
 function questionCount(){
     questionNum++;
     $('.questionCounter').text(questionNum);
-    console.log(`Question count cycled, should be showing ${questionNum}`);
 }
 
 // reset counter and score
@@ -96,7 +94,6 @@ function resetCounter() {
     questionNum = 1;
     $('.score').text(0);
     $('.questionCounter').text(0);
-    console.log('reset counter processed');
 }
 
 
@@ -107,8 +104,6 @@ function createNewAmend(questionNum) {
       <legend class="questionText">${questions[questionNum].question}</legend>
     </fieldset>
   </form>`)
-    console.log(`Should be pulling question array key ${questionNum}, which should be equal to ${questionNum}`);
-    console.log(`QuestionNum is showing as ${questionNum} at createNewAmend while amending HTML`);
 
     let fieldSelector = $(formMaker).find('fieldset');
 
@@ -121,7 +116,6 @@ function createNewAmend(questionNum) {
     });
     $(`<button type="submit" class="submitButton button"> Submit</button > `).appendTo(fieldSelector);
     return formMaker;
-    console.log(`HTML amendment working and questionNum is on ${questionNum}`);
 }
 
 
@@ -129,20 +123,17 @@ function createNewAmend(questionNum) {
 function printQuestions(){
 
     if(questionNum < questions.length){
-        console.log(`questionNum is showing ${questionNum} at printQuestion function, print successful`);
         return createNewAmend(questionNum);
 
     }else{
         $('.questionCounter').text(5);
         $('.interrogationBox').hide();
         finalScore();
-        console.log('Final Score Processed');
     }
 }
 
 // Start button on click
 function quizStrt(){
-    console.log(`Quiz initiated questionNum = ${questionNum}`);
     $('.quizContainer').on('click','.startButton',function(e){
         $('.questionCounter').text(`${questionNum}`);
         $('.interrogationBox').show();
@@ -165,10 +156,8 @@ function submitAnswer() {
         let correct = questions[questionNum].correctAnswer;
         if (answer === correct) {
             correctAnswer();
-            console.log(`submitAnswer function working and moving onto the correctAnswer function, questionNum showing ${questionNum}`);
         } else {
             wrongAnswer();
-            console.log(`submitAnswer function working and moving onto the wrongAnswer function, questionNum showing ${questionNum}`);
         }
     });
 }
@@ -182,7 +171,6 @@ function correctAnswer(){
     <img class="rightWrongImg" src="images/correct.jpg" alt="Marine Corps Iwo Jima flag raising monument in Washington D.C. at night with fireworks in background">`
     );
     scoreCount();
-    console.log(`Question number is showing as ${questionNum} at correctAnswer, correct answer function processed`);
 }
 
 
@@ -195,7 +183,6 @@ function wrongAnswer(){
     <button type="button" class="buttonNext button">Next</button>
     <img class="rightWrongImg" src="images/wrong.jpg" alt="Quote from John Adams, 'You will never know how much it has cost my generation to preserve your freedom. I hope you will make a good use of it.'">`
     );
-    console.log(`Question number is showing as ${questionNum} at wrongAnswer, Wrong answer function processed`);
 }
 
 
@@ -206,14 +193,13 @@ function next(){
         $('.interrogationBox').show();
         questionCount();
         $('.interrogationBox form').replaceWith(printQuestions());
-        console.log('Next (question) function processed and should be on question ' + questionNum);
     });
 }
 
 
 // Final Score
 function finalScore() {
-   console.log('running Final score');
+
 
     $('.questionBox').show();
 
@@ -231,14 +217,14 @@ function finalScore() {
 
     if (score >= 5) {
         array = perfect;
-        console.log('Pulling perfect score array');
+
 
     } else if (score >= 3 && score <= 4) {
         array = good;
-        console.log('pulling mediocre array');
+
     } else {
         array = sucky;
-        console.log('Pulling sucky score array');
+
     }
 
     return $('.questionBox').html(
@@ -255,7 +241,6 @@ function doItAgain() {
         resetCounter();
         $('.quizBox').show();
         $('.questionBox').hide();
-        console.log(`Quiz reset, questionNum should be 1 and it is showing as ${questionNum}`);
     });
 }
 
@@ -266,7 +251,6 @@ function startQuiz(){
     next();
     doItAgain();
     finalScore();
-    console.log(`questionNum starting as ${questionNum}`);
     $('.otBox').hide();
     $('.questionBox').hide();
     $('.interrogationBox').hide();
